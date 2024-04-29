@@ -14,4 +14,20 @@ function displayWorksInGallery(medias) {
     console.log(medias)
 }
 
+function getCategories() {
+    fetch (`${API_BASE_URL}/categories`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        displayWorksInGallery(data)
+    })
+    .catch(error => {console.log(error)})
+}
+
+function displayCategories(categorie) {
+    console.log(categorie)
+}
+
 getWorks()
+getCategories()
+
