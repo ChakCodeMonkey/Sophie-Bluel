@@ -209,3 +209,7 @@ footer nav ul {
 	padding: 0 25px 0 25px ;
 }
 
+.filters button:hover {
+	cursor : pointer;
+}
+
