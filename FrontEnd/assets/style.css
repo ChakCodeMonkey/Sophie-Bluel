@@ -195,7 +195,7 @@ footer nav ul {
 	margin-bottom: 30px;
 }
 
-.filters button {
+.filters .buttonRemove {
 	justify-content: flex;
 	justify-content: center;
 	font-family: 'Syne';
@@ -204,6 +204,20 @@ footer nav ul {
 	border: 1px solid #1D6154;
 	background-color: white;
 	color: #1D6154;
+	min-height: 37px;
+	margin: 10px;
+	padding: 0 25px 0 25px ;
+}
+
+.filters .buttonActive {
+	justify-content: flex;
+	justify-content: center;
+	font-family: 'Syne';
+	font-size: 19px;
+	border-radius: 50px;
+	border: 1px solid #1D6154;
+	background-color: #1D6154;
+	color: white;
 	min-height: 37px;
 	margin: 10px;
 	padding: 0 25px 0 25px ;

@@ -32,7 +32,6 @@ function displayWorksInGallery(medias) {
 }
 
 
-
 //fonctions pour afficher les catégories//
 function getCategories() {
     fetch (`${API_BASE_URL}/categories`)
@@ -44,10 +43,41 @@ function getCategories() {
     .catch(error => {console.log(error)})
 }
 
-function displayCategories(categorie) {
-    console.log(categorie)
+function displayCategories(categories) {
+    console.log(categories)
+    const filtersContainer = document.querySelector(".filters");
+    let currentButton = null;
+
+    const handleButtonClick = (event) => {
+        const clickedButton = event.target;
+        if (clickedButton !== currentButton) {
+            currentButton.classList.remove("buttonActive");
+            currentButton.classList.add("buttonRemove");
+            clickedButton.classList.remove("buttonRemove");
+            clickedButton.classList.add("buttonActive");
+            currentButton = clickedButton;
+            console.log(`categorie : ${clickedButton.textContent}`);
+        }
+    };
+
+    const allButton = document.createElement("button");
+    allButton.textContent = "Tous";
+    allButton.classList.add("buttonActive");
+    allButton.addEventListener("click", handleButtonClick);
+    filtersContainer.appendChild(allButton);
+    currentButton = allButton;
+
+    categories.forEach(category => {
+        const categoryButton = document.createElement("button");
+        categoryButton.textContent = category.name;
+        categoryButton.classList.add("buttonRemove");
+        categoryButton.addEventListener("click", handleButtonClick);
+        filtersContainer.appendChild(categoryButton);
+    });
 }
 
+
+//appel des fonctions//
 getWorks()
 getCategories()
 
