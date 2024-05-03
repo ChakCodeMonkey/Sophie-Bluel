@@ -1,5 +1,6 @@
 const API_BASE_URL = "http://localhost:5678/api";
 
+//fonctions pour afficher les travaux//
 function getWorks() {
     fetch (`${API_BASE_URL}/works`)
     .then(response => response.json())
@@ -30,6 +31,9 @@ function displayWorksInGallery(medias) {
     })
 }
 
+
+
+//fonctions pour afficher les catégories//
 function getCategories() {
     fetch (`${API_BASE_URL}/categories`)
     .then(response => response.json())
