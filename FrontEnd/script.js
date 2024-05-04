@@ -45,39 +45,34 @@ function getCategories() {
 
 function displayCategories(categories) {
     console.log(categories)
-    const filtersContainer = document.querySelector(".filters");
-    let currentButton = null;
 
-    const handleButtonClick = (event) => {
-        const clickedButton = event.target;
-        if (clickedButton !== currentButton) {
-            currentButton.classList.remove("buttonActive");
-            currentButton.classList.add("buttonRemove");
-            clickedButton.classList.remove("buttonRemove");
-            clickedButton.classList.add("buttonActive");
-            currentButton = clickedButton;
-            console.log(`categorie : ${clickedButton.textContent}`);
+    const filterButtons = document.querySelectorAll('.filters button');
+
+    filterButtons[0].classList.add('buttonActive');
+    filterButtons.forEach((button, index) => {
+        if (index !== 0) {
+            button.classList.add('buttonRemove');
         }
-    };
+    });
 
-    const allButton = document.createElement("button");
-    allButton.textContent = "Tous";
-    allButton.classList.add("buttonActive");
-    allButton.addEventListener("click", handleButtonClick);
-    filtersContainer.appendChild(allButton);
-    currentButton = allButton;
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.add('buttonActive');
+            filterButtons.forEach(otherButton => {
+                if (otherButton !== button) {
+                    otherButton.classList.remove('buttonActive');
+                }
+            });
 
-    categories.forEach(category => {
-        const categoryButton = document.createElement("button");
-        categoryButton.textContent = category.name;
-        categoryButton.classList.add("buttonRemove");
-        categoryButton.addEventListener("click", handleButtonClick);
-        filtersContainer.appendChild(categoryButton);
+            filterButtons.forEach(otherButton => {
+                if (otherButton !== button) {
+                    otherButton.classList.add('buttonRemove');
+                }
+            });
+        });
     });
 }
-
 
 //appel des fonctions//
 getWorks()
 getCategories()
-
