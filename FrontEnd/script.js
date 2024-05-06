@@ -12,23 +12,19 @@ function getWorks() {
 }
 
 function displayWorksInGallery(medias) {
-    console.log(medias)
-
     const gallery = document.querySelector(".gallery");
+    let galleryContent = "";
 
-    medias.forEach( media => {
-        const figure = document.createElement("figure");
-        const img = document.createElement("img");
-        const figcaption = document.createElement("figcaption");
-        img.src = media.imageUrl;
-        img.alt = media.title;
-        figcaption.textContent = media.title;
+    medias.forEach(media => {
+        galleryContent += `
+            <figure>
+                <img src="${media.imageUrl}" alt="${media.title}">
+                <figcaption>${media.title}</figcaption>
+            </figure>
+        `;
+    });
 
-        figure.appendChild(img);
-        figure.appendChild(figcaption);
-
-        gallery.appendChild(figure);
-    })
+    gallery.innerHTML = galleryContent;
 }
 
 
