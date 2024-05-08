@@ -46,11 +46,11 @@ function displayCategories(categories) {
     console.log(categories)
 
     const filtersContainer = document.querySelector(".filters");
-    let filtersContent = `<button onclick="filterByCategory('all')">Tous</button>`;
+    let filtersContent = `<button class = "buttonActive" onclick="filterByCategory('all')">Tous</button>`;
 
     categories.forEach(category => {
         filtersContent += `
-            <button onclick="filterByCategory(${category.id})">${category.name}</button>
+            <button class = "buttonRemove" onclick="filterByCategory(${category.id})">${category.name}</button>
         `;
     });
 
@@ -59,6 +59,25 @@ function displayCategories(categories) {
 
 
 
+function filterByCategory(categoryId) {
+    console.log(categoryId);
+
+    const buttons = document.querySelectorAll(".filters button");
+    buttons.forEach(button => {
+        button.classList.remove("buttonActive");
+        button.classList.add("buttonRemove");
+    });
+
+    if (categoryId === 'all') {
+        const allButton = document.querySelector(".filters button:first-child");
+        allButton.classList.remove("buttonRemove");
+        allButton.classList.add("buttonActive");
+    } else {
+        const selectedButton = document.querySelector(`.filters button:nth-child(${categoryId + 1})`);
+        selectedButton.classList.remove("buttonRemove");
+        selectedButton.classList.add("buttonActive");
+    }
+}
 
 
 
