@@ -28,6 +28,9 @@ function displayWorksInGallery(medias) {
 }
 
 
+
+
+
 //fonctions pour afficher les catégories//
 function getCategories() {
     fetch (`${API_BASE_URL}/categories`)
@@ -42,32 +45,23 @@ function getCategories() {
 function displayCategories(categories) {
     console.log(categories)
 
-    const filterButtons = document.querySelectorAll('.filters button');
+    const filtersContainer = document.querySelector(".filters");
+    let filtersContent = `<button onclick="filterByCategory('all')">Tous</button>`;
 
-    filterButtons[0].classList.add('buttonActive');
-    filterButtons.forEach((button, index) => {
-        if (index !== 0) {
-            button.classList.add('buttonRemove');
-        }
+    categories.forEach(category => {
+        filtersContent += `
+            <button onclick="filterByCategory(${category.id})">${category.name}</button>
+        `;
     });
 
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            button.classList.add('buttonActive');
-            filterButtons.forEach(otherButton => {
-                if (otherButton !== button) {
-                    otherButton.classList.remove('buttonActive');
-                }
-            });
-
-            filterButtons.forEach(otherButton => {
-                if (otherButton !== button) {
-                    otherButton.classList.add('buttonRemove');
-                }
-            });
-        });
-    });
+    filtersContainer.innerHTML = filtersContent;
 }
+
+
+
+
+
+
 
 //appel des fonctions//
 getWorks()
