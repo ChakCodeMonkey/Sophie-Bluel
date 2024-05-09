@@ -58,28 +58,34 @@ function displayCategories(categories) {
 }
 
 
-
+// Fonction de filtrage par catégorie et style
 function filterByCategory(categoryId) {
-    console.log(categoryId);
+    fetch(`${API_BASE_URL}/works`)
+        .then(response => response.json())
+        .then(data => {
+            const filteredMedias = categoryId === 'all' ? data : data.filter(media => media.categoryId == categoryId);
+            displayWorksInGallery(filteredMedias);
 
-    const buttons = document.querySelectorAll(".filters button");
-    buttons.forEach(button => {
-        button.classList.remove("buttonActive");
-        button.classList.add("buttonRemove");
-    });
+            const buttons = document.querySelectorAll(".filters button");
+            buttons.forEach(button => {
+                button.classList.remove("buttonActive");
+                button.classList.add("buttonRemove");
+            });
 
-    if (categoryId === 'all') {
-        const allButton = document.querySelector(".filters button:first-child");
-        allButton.classList.remove("buttonRemove");
-        allButton.classList.add("buttonActive");
-    } else {
-        const selectedButton = document.querySelector(`.filters button:nth-child(${categoryId + 1})`);
-        selectedButton.classList.remove("buttonRemove");
-        selectedButton.classList.add("buttonActive");
-    }
+            if (categoryId === 'all') {
+                const allButton = document.querySelector(".filters button:first-child");
+                allButton.classList.remove("buttonRemove");
+                allButton.classList.add("buttonActive");
+            } else {
+                const selectedButton = document.querySelector(`.filters button:nth-child(${parseInt(categoryId) + 1})`);
+                selectedButton.classList.remove("buttonRemove");
+                selectedButton.classList.add("buttonActive");
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
 }
-
-
 
 
 //appel des fonctions//
