@@ -1,14 +1,19 @@
 const API_BASE_URL = "http://localhost:5678/api";
 
-//fonctions pour afficher les travaux//
+let allWorks = [];
+ 
+//fonctions pour afficher les travaux// 
 function getWorks() {
-    fetch (`${API_BASE_URL}/works`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        displayWorksInGallery(data)
-    })
-    .catch(error => {console.log(error)})
+    fetch(`${API_BASE_URL}/works`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            allWorks = data;
+            displayWorksInGallery(allWorks);
+        })
+        .catch(error => {
+            console.log(error);
+        });
 }
 
 function displayWorksInGallery(medias) {
@@ -27,67 +32,63 @@ function displayWorksInGallery(medias) {
     gallery.innerHTML = galleryContent;
 }
 
-
-
-
-
-//fonctions pour afficher les catégories//
+// Fonctions pour afficher les catégories
 function getCategories() {
-    fetch (`${API_BASE_URL}/categories`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        displayCategories(data)
-    })
-    .catch(error => {console.log(error)})
-}
-
-function displayCategories(categories) {
-    console.log(categories)
-
-    const filtersContainer = document.querySelector(".filters");
-    let filtersContent = `<button class = "buttonActive" onclick="filterByCategory('all')">Tous</button>`;
-
-    categories.forEach(category => {
-        filtersContent += `
-            <button class = "buttonRemove" onclick="filterByCategory(${category.id})">${category.name}</button>
-        `;
-    });
-
-    filtersContainer.innerHTML = filtersContent;
-}
-
-
-// Fonction de filtrage par catégorie et style
-function filterByCategory(categoryId) {
-    fetch(`${API_BASE_URL}/works`)
+    fetch(`${API_BASE_URL}/categories`)
         .then(response => response.json())
         .then(data => {
-            const filteredMedias = categoryId === 'all' ? data : data.filter(media => media.categoryId == categoryId);
-            displayWorksInGallery(filteredMedias);
-
-            const buttons = document.querySelectorAll(".filters button");
-            buttons.forEach(button => {
-                button.classList.remove("buttonActive");
-                button.classList.add("buttonRemove");
-            });
-
-            if (categoryId === 'all') {
-                const allButton = document.querySelector(".filters button:first-child");
-                allButton.classList.remove("buttonRemove");
-                allButton.classList.add("buttonActive");
-            } else {
-                const selectedButton = document.querySelector(`.filters button:nth-child(${parseInt(categoryId) + 1})`);
-                selectedButton.classList.remove("buttonRemove");
-                selectedButton.classList.add("buttonActive");
-            }
+            console.log(data);
+            displayCategories(data);
         })
         .catch(error => {
             console.log(error);
         });
 }
 
+function displayCategories(categories) {
+    console.log(categories);
 
-//appel des fonctions//
-getWorks()
-getCategories()
+    const filtersContainer = document.querySelector(".filters");
+    let filtersContent = `<button class="buttonActive" data-category-id="all">Tous</button>`;
+
+    categories.forEach(category => {
+        filtersContent += `
+            <button class="buttonRemove" data-category-id="${category.id}">${category.name}</button>
+        `;
+    });
+
+    filtersContainer.innerHTML = filtersContent;
+
+
+    const buttons = document.querySelectorAll(".filters button");
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterByCategory(button.dataset.categoryId);
+        });
+    });
+}
+
+// Fonction de filtre
+function filterByCategory(categoryId) {
+    const filteredMedias = categoryId === 'all' ? allWorks : allWorks.filter(media => media.categoryId == categoryId);
+    displayWorksInGallery(filteredMedias);
+
+    const buttons = document.querySelectorAll(".filters button");
+    buttons.forEach(button => {
+        button.classList.remove("buttonActive");
+        button.classList.add("buttonRemove");
+    });
+
+    if (categoryId === 'all') {
+        const allButton = document.querySelector(".filters button:first-child");
+        allButton.classList.remove("buttonRemove");
+        allButton.classList.add("buttonActive");
+    } else {
+        const selectedButton = document.querySelector(`.filters button[data-category-id="${categoryId}"]`);
+        selectedButton.classList.remove("buttonRemove");
+        selectedButton.classList.add("buttonActive");
+    }
+}
+
+getWorks();
+getCategories();

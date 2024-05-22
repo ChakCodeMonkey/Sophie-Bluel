@@ -255,10 +255,5 @@ header a {
     gap: 11px;
     margin-left: calc((100% - 100vw) / 2);
     margin-right: calc((100% - 100vw) / 2);
-	display: none;
-}
 
-
-.modeEdit i {
-	margin-right: 10px;
 }
