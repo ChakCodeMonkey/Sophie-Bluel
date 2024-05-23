@@ -94,33 +94,4 @@ getWorks();
 getCategories();
 
 
-function login() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    let data = {
-        email: email
-        password: password
-    };
-
-    fetch(`${API_BASE_URL}/users/login` , {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            'Content-type' : 'application/json'
-        },
-    })
-}
-
-document.querySelector('#login form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    login()
-})
-
-.then (data => {
-    localStorage.setItem('token', data.token)
-    window.location.href = 'index.html'
-})
-
-
 
