@@ -244,6 +244,10 @@ header a {
 	display: none;
 }
 
+.loginHeader {
+	display: visible;
+}
+
 .modeEdit {
     height: 59px;
     background-color: black;
@@ -255,12 +259,19 @@ header a {
     gap: 11px;
     margin-left: calc((100% - 100vw) / 2);
     margin-right: calc((100% - 100vw) / 2);
+	display: none;
 
 }
 
 .test {
 	display: flex;
 	margin-left: 40%;
+	align-items: center;
+}
+
+.test span {
+	margin-bottom: 30px;
+	display: none;
 }
 
 .test h2 {

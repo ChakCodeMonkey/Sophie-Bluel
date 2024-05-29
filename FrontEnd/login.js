@@ -19,24 +19,31 @@ function login() {
           'Content-type' : 'application/json'
       },
   })
-  .then(response => console.log(response.json()))
+  .then(response => {
+    if (!response.ok) {
+      throw new error('Faute de frappe email ou password');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data);
+    if (data.token) {
+      localStorage.setItem('token', data.token);
+      window.location.href = 'index.html';
+
+      
+    } else {
+      console.error('Pas de token');
+    }
+  })
+  .catch(error => {
+    console.error('Il y a eu un problème', error);
+  });
+
 }
 
-const h2 = document.querySelector('.test');
-console.log(h2);
-
-h2.addEventListener('click', function() {
+document.querySelector('#login form').addEventListener('submit', function(e) {
+  e.preventDefault();
   login()
 })
-
-// document.querySelector('#login form').addEventListener('submit', function(e) {
-//   e.preventDefault();
-//   login()
-// })
-
-// .then (data => {
-//   localStorage.setItem('token', data.token)
-//   window.location.href = 'index.html'
-// })
-
 
