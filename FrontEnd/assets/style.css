@@ -281,3 +281,67 @@ header a {
 .test i {
 	margin-right: 10px;
 }
+
+#modal {
+	background-color: rgba(0, 0, 0, 0.299);
+	z-index: 100;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	display: none;
+	top: 0;
+	left: 0;
+
+}
+
+.modalAjout {
+	background-color: white;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 630px;
+	height: 688px;
+	margin: auto;
+	border-radius: 10px;
+	flex-direction: column;
+}
+
+.modalAjout div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.modalAjout i {
+	font-size: 24px;
+	width: 582px;
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 24px;
+}
+
+.modalAjout h3 {
+	font-family: 'Work sans';
+	font-size: 30px;
+	margin-top: 24px;
+}
+
+.modalAjout .modalContent {
+	height: 400px;
+	width: 420px;
+	border-bottom: solid 1px #B3B3B3;
+	margin-bottom: 50px;
+	margin-top: 50px;
+}
+
+.modalAjout button {
+	font-family: 'Syne' ;
+	font-size: 17px;
+	font-weight: bold;
+	color: white;
+	background-color: #1D6154;
+	border-style: none;
+	border-radius: 60px;
+	height: 36px;
+	width: 237px;
+}
