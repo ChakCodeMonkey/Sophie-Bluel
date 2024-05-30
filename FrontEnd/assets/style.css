@@ -345,3 +345,8 @@ header a {
 	height: 36px;
 	width: 237px;
 }
+
+#login .fail {
+	text-decoration: none;
+	display: none;
+}
