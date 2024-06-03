@@ -95,3 +95,49 @@ getCategories();
 
 
 
+
+function checkTokenAndDisplay() {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+        document.querySelector('.test span').style.display = 'flex';
+        document.querySelector('.logoutHeader').style.display = 'block';
+        document.querySelector('.modeEdit').style.display = 'flex';
+        document.querySelector('.loginHeader').style.display = 'none';
+    } else {
+        document.querySelector('.test span').style.display = 'none';
+        document.querySelector('.logoutHeader').style.display = 'none';
+        document.querySelector('.modeEdit').style.display = 'none';
+        document.querySelector('.loginHeader').style.display = 'block';
+    }
+}
+
+function logout() {
+    localStorage.removeItem('token');
+    checkTokenAndDisplay();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    checkTokenAndDisplay();
+    
+    const logoutHeader = document.querySelector('.logoutHeader');
+    if (logoutHeader) {
+        logoutHeader.addEventListener('click', logout);
+        window.location.href = 'index.html';
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const testSpan = document.querySelector('.test span');
+    const modal = document.getElementById('modal');
+    const xmark = document.querySelector('.fa-xmark');
+
+    testSpan.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
+ 
+    xmark.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+});

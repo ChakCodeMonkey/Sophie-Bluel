@@ -259,8 +259,6 @@ header a {
     gap: 11px;
     margin-left: calc((100% - 100vw) / 2);
     margin-right: calc((100% - 100vw) / 2);
-	display: none;
-
 }
 
 .test {
@@ -271,7 +269,8 @@ header a {
 
 .test span {
 	margin-bottom: 30px;
-	display: none;
+	display: flex;
+	cursor: pointer;
 }
 
 .test h2 {
@@ -344,6 +343,10 @@ header a {
 	border-radius: 60px;
 	height: 36px;
 	width: 237px;
+}
+
+.modeEditDisplay {
+	display: block;
 }
 
 #login .fail {

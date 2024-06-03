@@ -39,7 +39,8 @@ function login() {
   .catch(error => {
     console.error('Il y a eu un problème', error);
     const errorMessage = document.querySelector('.fail');
-    errorMessage.computedStyleMap.display('block');
+    if (errorMessage) {
+        errorMessage.style.display = 'block';}
   });
 
 }
