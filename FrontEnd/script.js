@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+// affichage de la modal au boutton modifier, reset du css quand on appuie sur la croix
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const testSpan = document.querySelector('.test span');
@@ -156,6 +157,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 });
 
+
+
+
+
+
+// click pour la flèche et la croix dans la modal
+
 document.addEventListener('DOMContentLoaded', (event) => {
     const ajoutPic = document.querySelector('.ajoutPic');
     const valider = document.querySelector('.valider');
@@ -170,21 +178,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
         headerModal.style.justifyContent = 'space-between';
         arrow.style.display = 'block';
     });
+
+    arrow.addEventListener('click', () => {
+        valider.style.display = 'none';
+        ajoutPic.style.display = 'block';
+        contenu.style.display = 'flex';
+        headerModal.style.justifyContent = 'flex-end';
+        arrow.style.display = 'none'; 
+    })
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

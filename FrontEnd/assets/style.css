@@ -403,3 +403,12 @@ header a {
     right: 4px;
 	margin-top: 24px;
 }
+
+.modalFile {
+	height: 400px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	border-bottom: solid 1px #B3B3B3;
+	width: 420px;
+	display: none;
+}
