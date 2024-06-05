@@ -10,6 +10,7 @@ function getWorks() {
             console.log(data);
             allWorks = data;
             displayWorksInGallery(allWorks);
+            displayWorksInModal(allWorks);
         })
         .catch(error => {
             console.log(error);
@@ -123,15 +124,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutHeader = document.querySelector('.logoutHeader');
     if (logoutHeader) {
         logoutHeader.addEventListener('click', logout);
-        window.location.href = 'index.html';
     }
 });
+
+
 
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const testSpan = document.querySelector('.test span');
     const modal = document.getElementById('modal');
     const xmark = document.querySelector('.fa-xmark');
+    const ajoutPic = document.querySelector('.ajoutPic');
+    const valider = document.querySelector('.valider');
+    const contenu = document.querySelector('.modalContent');
+    const headerModal = document.querySelector('.headerModal');
+    const arrow = document.querySelector('.fa-arrow-left');
+
+
 
     testSpan.addEventListener('click', () => {
         modal.style.display = 'block';
@@ -139,5 +148,65 @@ document.addEventListener('DOMContentLoaded', (event) => {
  
     xmark.addEventListener('click', () => {
         modal.style.display = 'none';
+        valider.style.display = 'none';
+        ajoutPic.style.display = 'block';
+        contenu.style.display = 'flex';
+        headerModal.style.justifyContent = 'flex-end';
+        arrow.style.display = 'none';
     });
 });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const ajoutPic = document.querySelector('.ajoutPic');
+    const valider = document.querySelector('.valider');
+    const contenu = document.querySelector('.modalContent');
+    const headerModal = document.querySelector('.headerModal');
+    const arrow = document.querySelector('.fa-arrow-left');
+
+    ajoutPic.addEventListener('click', () => {
+        valider.style.display = 'block';
+        ajoutPic.style.display = 'none';
+        contenu.style.display = 'none';
+        headerModal.style.justifyContent = 'space-between';
+        arrow.style.display = 'block';
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// fonction d'affiche des travaux dans la modal
+
+function displayWorksInModal(medias) {
+    const modalContent = document.querySelector(".modalContent");
+    let modalContentHTML = "";
+
+    medias.forEach(media => {
+        modalContentHTML += `
+            <div class="modalWork">
+                <img src="${media.imageUrl}" alt="${media.title}">
+                <i class="fa-solid fa-trash-can"></i>
+            </div>
+        `;
+    });
+
+    modalContent.innerHTML = modalContentHTML;
+}
