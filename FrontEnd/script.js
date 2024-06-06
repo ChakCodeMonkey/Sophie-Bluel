@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutHeader = document.querySelector('.logoutHeader');
     if (logoutHeader) {
         logoutHeader.addEventListener('click', logout);
+        //window.location.href = 'index.html';
     }
 });
 
