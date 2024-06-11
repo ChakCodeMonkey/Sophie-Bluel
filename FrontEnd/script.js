@@ -105,11 +105,13 @@ function checkTokenAndDisplay() {
         document.querySelector('.logoutHeader').style.display = 'block';
         document.querySelector('.modeEdit').style.display = 'flex';
         document.querySelector('.loginHeader').style.display = 'none';
+        document.querySelector('.filters').style.display = 'none';
     } else {
         document.querySelector('.test span').style.display = 'none';
         document.querySelector('.logoutHeader').style.display = 'none';
         document.querySelector('.modeEdit').style.display = 'none';
         document.querySelector('.loginHeader').style.display = 'block';
+        document.querySelector('.filters').style.display = 'flex';
     }
 }
 
@@ -141,8 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const contenu = document.querySelector('.modalContent');
     const headerModal = document.querySelector('.headerModal');
     const arrow = document.querySelector('.fa-arrow-left');
-
-
+    const file = document.querySelector('.modalFile');
 
     testSpan.addEventListener('click', () => {
         modal.style.display = 'block';
@@ -155,11 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
         contenu.style.display = 'flex';
         headerModal.style.justifyContent = 'flex-end';
         arrow.style.display = 'none';
+        file.style.display = 'none';
     });
 });
-
-
-
 
 
 
@@ -171,6 +170,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const contenu = document.querySelector('.modalContent');
     const headerModal = document.querySelector('.headerModal');
     const arrow = document.querySelector('.fa-arrow-left');
+    const file = document.querySelector('.modalFile');
 
     ajoutPic.addEventListener('click', () => {
         valider.style.display = 'block';
@@ -178,6 +178,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         contenu.style.display = 'none';
         headerModal.style.justifyContent = 'space-between';
         arrow.style.display = 'block';
+        file.style.display = 'block';
+
     });
 
     arrow.addEventListener('click', () => {
@@ -186,12 +188,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         contenu.style.display = 'flex';
         headerModal.style.justifyContent = 'flex-end';
         arrow.style.display = 'none'; 
+        file.style.display = 'none';
     })
 });
-
-
-
-
 
 
 
