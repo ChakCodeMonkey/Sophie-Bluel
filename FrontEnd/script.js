@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // affichage de la modal au boutton modifier, reset du css quand on appuie sur la croix
 
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
     const testSpan = document.querySelector('.test span');
     const modal = document.getElementById('modal');
     const xmark = document.querySelector('.fa-xmark');
