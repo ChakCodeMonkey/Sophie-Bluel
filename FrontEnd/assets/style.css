@@ -493,3 +493,8 @@ header a {
 	border: none;
 	margin-top: 10px;
 }
+
+
+.fa-trash-can {
+	cursor: pointer;
+}

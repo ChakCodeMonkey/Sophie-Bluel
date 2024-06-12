@@ -203,12 +203,13 @@ function displayWorksInModal(medias) {
 
     medias.forEach(media => {
         modalContentHTML += `
-            <div class="modalWork">
+            <div class="modalWork data-id="${media.id}">
                 <img src="${media.imageUrl}" alt="${media.title}">
-                <i class="fa-solid fa-trash-can"></i>
+                <i class="fa-solid fa-trash-can data-id="${media.id}"></i>
             </div>
         `;
     });
 
     modalContent.innerHTML = modalContentHTML;
 }
+
