@@ -213,3 +213,17 @@ function displayWorksInModal(medias) {
     modalContent.innerHTML = modalContentHTML;
 }
 
+
+//function displayCatInSelect(categories) {
+//   console.log(categories);
+
+//    const catSelect = document.getElementById("catSelect");
+//    let selectContent = '';
+
+//    categories.forEach(category => {
+//        filtersContent += `
+//            <option value="${category.id}">${category.name}</option>`;
+//    });
+
+//    catSelect.innerHTML = selectContent;
+//}
