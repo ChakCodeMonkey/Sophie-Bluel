@@ -40,6 +40,7 @@ function getCategories() {
         .then(data => {
             console.log(data);
             displayCategories(data);
+            displayCatInSelect(data);
         })
         .catch(error => {
             console.log(error);
@@ -124,11 +125,9 @@ document.addEventListener('DOMContentLoaded', () => {
     checkTokenAndDisplay();
     
     const logoutHeader = document.querySelector('.logoutHeader');
-    if (logoutHeader) {
         logoutHeader.addEventListener('click', logout);
-        //window.location.href = 'index.html';
-    }
 });
+
 
 
 
@@ -214,16 +213,16 @@ function displayWorksInModal(medias) {
 }
 
 
-//function displayCatInSelect(categories) {
-//   console.log(categories);
+function displayCatInSelect(categories) {
+   console.log(categories);
 
-//    const catSelect = document.getElementById("catSelect");
-//    let selectContent = '';
+    const catSelect = document.getElementById("catSelect");
+    let selectContent = `<option value=""></option>`;
 
-//    categories.forEach(category => {
-//        filtersContent += `
-//            <option value="${category.id}">${category.name}</option>`;
-//    });
+    categories.forEach(category => {
+        selectContent += `
+            <option value="${category.id}">${category.name}</option>`;
+    });
 
-//    catSelect.innerHTML = selectContent;
-//}
+    catSelect.innerHTML = selectContent;
+}
