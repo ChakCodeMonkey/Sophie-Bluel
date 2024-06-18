@@ -226,3 +226,28 @@ function displayCatInSelect(categories) {
 
     catSelect.innerHTML = selectContent;
 }
+
+
+// fonctions de delete des images
+function deleteWork(workId) {
+    fetch(`${API_BASE_URL}/works/${workId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP ! statut : ${response.status}`);
+        }
+        return response.json(); 
+    })
+    .then(data => {
+        console.log('donnée supprimée :', data);
+    })
+    .catch(error => {
+        console.log('Erreur :', error);
+    });
+}
+
+deleteWork(1); 
