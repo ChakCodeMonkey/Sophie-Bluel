@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
 
-// fonction d'affiche des travaux dans la modal
+// fonction d'affiche des travaux dans la modale
 
 function displayWorksInModal(medias) {
     const modalContent = document.querySelector(".modalContent");
@@ -208,6 +208,10 @@ function displayWorksInModal(medias) {
             </div>
         `;
     });
+
+    // querySelector la poubelle
+    // addeventlistener au click, la poubelle
+    // au click : deleteWork(id)
 
     modalContent.innerHTML = modalContentHTML;
 }
@@ -229,25 +233,51 @@ function displayCatInSelect(categories) {
 
 
 // fonctions de delete des images
-function deleteWork(workId) {
-    fetch(`${API_BASE_URL}/works/${workId}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Erreur HTTP ! statut : ${response.status}`);
-        }
-        return response.json(); 
-    })
-    .then(data => {
-        console.log('donnée supprimée :', data);
-    })
-    .catch(error => {
-        console.log('Erreur :', error);
-    });
+async function deleteWork(workId) {
+    const token = localStorage.getItem("token")
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/works/${workId}`, {
+                method: 'DELETE',
+                headers: {
+                    Accept: "application/json",
+                    Authorization: `Baerer ${token}`,
+                },
+            });
+            if (response.ok) {
+                // supprime le parent de workId (parentNode)
+            }
+    } catch (error) {
+        console.log(error);
+    }
 }
 
-deleteWork(1); 
+
+
+async function postWork() {
+    const token = localStorage.getItem("token")
+
+    // récupérer la valeur de l'input file
+    // récupérer la valeur de l'input title
+    // récupérer la valeur du selecteur de catégorie
+
+    const formData = new FormData();
+    // formData.append('title', valeur de l'input title)
+
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/ROUTEDUPOST`, {
+                method: 'POST',
+                headers: {
+                    Accept: "application/json",
+                    Authorization: `Baerer ${token}`,
+                },
+                body: formData,
+            });
+            if (response.ok) {
+                // mettre a jour les gallery
+            }
+    } catch (error) {
+        console.log(error);
+    }
+}
