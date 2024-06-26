@@ -199,6 +199,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 function displayWorksInModal(medias) {
     const modalContent = document.querySelector(".modalContent");
     let modalContentHTML = "";
+    const poubelle = document.querySelector('.fa-trash-can');
 
     medias.forEach(media => {
         modalContentHTML += `
@@ -209,12 +210,9 @@ function displayWorksInModal(medias) {
         `;
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const poubelle = document.querySelector('.fa-trash-can');
-        poubelle.addEventListener('click', () => {
-            console.log('coucou les copines');
-        });
-    });
+    poubelle.addEventListener('click', () => {
+        console.log('coucou');
+    })
     
     // querySelector la poubelle
     // addeventlistener au click, la poubelle
