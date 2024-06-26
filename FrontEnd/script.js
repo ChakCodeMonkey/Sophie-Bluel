@@ -209,12 +209,20 @@ function displayWorksInModal(medias) {
         `;
     });
 
+    document.addEventListener('DOMContentLoaded', () => {
+        const poubelle = document.querySelector('.fa-trash-can');
+        poubelle.addEventListener('click', () => {
+            console.log('coucou les copines');
+        });
+    });
+    
     // querySelector la poubelle
     // addeventlistener au click, la poubelle
     // au click : deleteWork(id)
 
     modalContent.innerHTML = modalContentHTML;
 }
+
 
 
 function displayCatInSelect(categories) {
