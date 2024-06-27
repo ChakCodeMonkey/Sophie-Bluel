@@ -198,31 +198,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 function displayWorksInModal(medias) {
     const modalContent = document.querySelector(".modalContent");
-    let modalContentHTML = "";
 
 
     medias.forEach(media => {
-        modalContentHTML += `
-            <div class="modalWork data-id="${media.id}">
-                <img src="${media.imageUrl}" alt="${media.title}">
-                <i class="fa-solid fa-trash-can data-id="${media.id}"></i>
-            </div>
-        `;
-    });
+        const mainDiv = document.createElement('div');
+        mainDiv.classList.add('modalWork');
+        mainDiv.id = media.id;
 
-    const poubelles = document.querySelectorAll('.fa-trash-can');
-    poubelles.forEach(poubelle => {
-        poubelle.addEventListener('click', () => {
-            console.log('coucou');
+        const mediaImg = document.createElement('img');
+        mediaImg.src = media.imageUrl;
+        mediaImg.alt = media.title;
+
+        const trashIcon = document.createElement('i');
+        trashIcon.classList.add('fa-solid', 'fa-trash-can');
+        trashIcon.id = media.id
+
+        mainDiv.appendChild(mediaImg)
+        mainDiv.appendChild(trashIcon)
+        modalContent.appendChild(mainDiv);
+
+        trashIcon.addEventListener('click', () => {
+            console.log('coucou')
+            // deleteWork(trashIcon.id);
         });
     });
-    
-    // querySelector la poubelle
-    // addeventlistener au click, la poubelle
-    // au click : deleteWork(id)
 
     modalContent.innerHTML = modalContentHTML;
 }
+
 
 
 
