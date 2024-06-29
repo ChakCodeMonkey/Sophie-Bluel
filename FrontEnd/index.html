@@ -35,8 +35,9 @@
 						+ Ajouter photo
 					</label>
 					<input type="file" id="avatar" name="avatar"
-					accept="image/png, image/jpeg" />
+					accept="image/png, image/jpeg" onchange="previewImage();"/>
 					<p>jpg, png: 4mo max</p>
+					<img id="previewImage" src="" alt="">
 				</div>
 				<div class="fileTitle">
 					<h4>Titre</h4>

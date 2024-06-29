@@ -243,6 +243,17 @@ function displayCatInSelect(categories) {
     catSelect.innerHTML = selectContent;
 }
 
+function previewImage () {
+    var file = document.getElementById("file").files;
+    if (file.length > 0) {
+        var fileReader = new FileReader();
+
+        fileReader.onloead = function (event) {
+            document.getElementById("preview").setAttribute("src", event.target.result);
+        };
+        fileReader.readAsDataURL(file[0]);
+    }
+};
 
 // fonctions de delete des images
 async function deleteWork(workId) {
