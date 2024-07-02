@@ -219,7 +219,7 @@ function displayWorksInModal(medias) {
 
         trashIcon.addEventListener('click', () => {
             console.log('coucou')
-            // deleteWork(trashIcon.id);
+            deleteWork(media.id);
         });
     });
 
@@ -257,21 +257,29 @@ function previewImage () {
 
 // fonctions de delete des images
 async function deleteWork(workId) {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
 
     try {
         const response = await fetch(`${API_BASE_URL}/works/${workId}`, {
-                method: 'DELETE',
-                headers: {
-                    Accept: "application/json",
-                    Authorization: `Baerer ${token}`,
-                },
-            });
-            if (response.ok) {
-                // supprime le parent de workId (parentNode)
+            method: 'DELETE',
+            headers: {
+                Accept: "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        if (response.ok) {
+            // Supprime le parent de l'élément avec l'ID workId
+            const workElement = document.getElementById(workId);
+            if (workElement && workElement.parentNode) {
+                workElement.parentNode.removeChild(workElement);
             }
+            console.log(`Work with id ${workId} has been deleted`);
+        } else {
+            console.error('Failed to delete work');
+        }
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 
