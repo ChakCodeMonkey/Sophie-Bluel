@@ -293,12 +293,24 @@ async function deleteWork(workId) {
 async function postWork() {
     const token = localStorage.getItem("token")
 
-    // récupérer la valeur de l'input file
-    // récupérer la valeur de l'input title
-    // récupérer la valeur du selecteur de catégorie
+    const fileInput = document.getElementById("avatar");
+    const titleInput = document.querySelector(".fileTitle input");
+    const categorySelect = document.getElementById("catSelect");
+
+    const file = fileInput.files[0];
+    const title = titleInput.value;
+    const categoryId = categorySelect.value;
+
+            // récupérer la valeur de l'input file
+            // récupérer la valeur de l'input title
+            // récupérer la valeur du selecteur de catégorie
 
     const formData = new FormData();
-    // formData.append('title', valeur de l'input title)
+            // formData.append('title', valeur de l'input title)
+
+    formData.append('image', file);
+    formData.append('title', title);
+    formData.append('category', categoryId);
 
 
     try {
