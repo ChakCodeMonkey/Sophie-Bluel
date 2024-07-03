@@ -498,3 +498,8 @@ header a {
 .fa-trash-can {
 	cursor: pointer;
 }
+
+#previewImage {
+	height: 169px;
+	margin-top: -125px;
+}

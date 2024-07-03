@@ -143,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerModal = document.querySelector('.headerModal');
     const arrow = document.querySelector('.fa-arrow-left');
     const file = document.querySelector('.modalFile');
+    const upload = document.getElementById('previewImage');
 
     testSpan.addEventListener('click', () => {
         modal.style.display = 'block';
@@ -156,6 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
         headerModal.style.justifyContent = 'flex-end';
         arrow.style.display = 'none';
         file.style.display = 'none';
+        upload.setAttribute('src', '');
+
     });
 });
 
@@ -170,6 +173,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const headerModal = document.querySelector('.headerModal');
     const arrow = document.querySelector('.fa-arrow-left');
     const file = document.querySelector('.modalFile');
+    const upload = document.getElementById('previewImage');
 
     ajoutPic.addEventListener('click', () => {
         valider.style.display = 'block';
@@ -188,6 +192,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         headerModal.style.justifyContent = 'flex-end';
         arrow.style.display = 'none'; 
         file.style.display = 'none';
+        upload.setAttribute('src', '');
     })
 });
 
@@ -244,12 +249,12 @@ function displayCatInSelect(categories) {
 }
 
 function previewImage () {
-    var file = document.getElementById("file").files;
+    var file = document.getElementById("avatar").files;
     if (file.length > 0) {
         var fileReader = new FileReader();
 
-        fileReader.onloead = function (event) {
-            document.getElementById("preview").setAttribute("src", event.target.result);
+        fileReader.onload = function (event) {
+            document.getElementById("previewImage").setAttribute("src", event.target.result);
         };
         fileReader.readAsDataURL(file[0]);
     }
