@@ -312,9 +312,11 @@ async function postWork() {
     formData.append('title', title);
     formData.append('category', categoryId);
 
+    
+
 
     try {
-        const response = await fetch(`${API_BASE_URL}/ROUTEDUPOST`, {
+        const response = await fetch(`${API_BASE_URL}/works`, {
                 method: 'POST',
                 headers: {
                     Accept: "application/json",
