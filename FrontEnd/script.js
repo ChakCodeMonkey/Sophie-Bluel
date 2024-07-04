@@ -293,13 +293,9 @@ async function deleteWork(workId) {
 async function postWork() {
     const token = localStorage.getItem("token")
 
-    const fileInput = document.getElementById("avatar");
-    const titleInput = document.querySelector(".fileTitle input");
-    const categorySelect = document.getElementById("catSelect");
-
-    const file = fileInput.files[0];
-    const title = titleInput.value;
-    const categoryId = categorySelect.value;
+    const fileInput = document.getElementById("avatar").files[0];
+    const titleInput = document.querySelector(".fileTitle input").value;
+    const categorySelect = document.getElementById("catSelect").value;
 
             // récupérer la valeur de l'input file
             // récupérer la valeur de l'input title
@@ -308,9 +304,9 @@ async function postWork() {
     const formData = new FormData();
             // formData.append('title', valeur de l'input title)
 
-    formData.append('image', file);
-    formData.append('title', title);
-    formData.append('category', categoryId);
+    formData.append('image', fileInput);
+    formData.append('title', titleInput);
+    formData.append('category', categorySelect);
 
     
 
@@ -331,3 +327,5 @@ async function postWork() {
         console.log(error);
     }
 }
+
+
