@@ -316,7 +316,7 @@ async function postWork() {
                 method: 'POST',
                 headers: {
                     Accept: "application/json",
-                    Authorization: `Baerer ${token}`,
+                    Authorization: `Bearer ${token}`,
                 },
                 body: formData,
             });
@@ -329,3 +329,29 @@ async function postWork() {
 }
 
 
+
+// fonction pour changer la couleur du bouton .valider si il y a une valeurs dans les input et le select
+
+function changeColor() {
+    const avatarInput = document.getElementById('avatar').files.length > 0;
+    const titleInput = document.querySelector('.fileTitle input').value.trim() !== '';
+    const categorySelect = document.getElementById('catSelect').value.trim() !== '';
+
+    const validerButton = document.querySelector('.valider');
+
+    if (avatarInput && titleInput && categorySelect) {
+        validerButton.style.backgroundColor = '#1D6154';
+    } else {
+        validerButton.style.backgroundColor = '';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const avatarInput = document.getElementById('avatar');
+    const titleInput = document.querySelector('.fileTitle input');
+    const categorySelect = document.getElementById('catSelect');
+
+    avatarInput.addEventListener('change', changeColor);
+    titleInput.addEventListener('input', changeColor);
+    categorySelect.addEventListener('change', changeColor);
+});
