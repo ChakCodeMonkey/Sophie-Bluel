@@ -322,6 +322,7 @@ async function postWork() {
             });
             if (response.ok) {
                 // mettre a jour les gallery
+                console.loh('oui oui baguette');
             }
     } catch (error) {
         console.log(error);
@@ -341,8 +342,10 @@ function changeColor() {
 
     if (avatarInput && titleInput && categorySelect) {
         validerButton.style.backgroundColor = '#1D6154';
+        validerButton.disabled = false;
     } else {
         validerButton.style.backgroundColor = '';
+        validerButton.disabled = true;
     }
 }
 
@@ -350,8 +353,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const avatarInput = document.getElementById('avatar');
     const titleInput = document.querySelector('.fileTitle input');
     const categorySelect = document.getElementById('catSelect');
+    const validerButton = document.querySelector('.valider');
 
     avatarInput.addEventListener('change', changeColor);
     titleInput.addEventListener('input', changeColor);
     categorySelect.addEventListener('change', changeColor);
+    validerButton.addEventListener('click', postWork);
 });
