@@ -322,7 +322,7 @@ async function postWork() {
             });
             if (response.ok) {
                 // mettre a jour les gallery
-                console.loh('oui oui baguette');
+                console.log('oui oui baguette');
             }
     } catch (error) {
         console.log(error);
