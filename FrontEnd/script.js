@@ -98,6 +98,27 @@ getCategories();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// fonction affichage mode admin
+
 function checkTokenAndDisplay() {
     const token = localStorage.getItem('token');
 
@@ -127,6 +148,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutHeader = document.querySelector('.logoutHeader');
         logoutHeader.addEventListener('click', logout);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
